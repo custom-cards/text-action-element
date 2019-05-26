@@ -1,7 +1,7 @@
 {
-  "name": "cover-element",
+  "name": "text-action-element",
   "version": "v0.1.0",
-  "description": "A toggleable element that groups other elements within Home Assistant's picture-elements cards.",
+  "description": "A simple clickable text element for Home Assistant picture elements card. For use with custom fonts.",
   "keywords": [
     "home-assistant",
     "homeassistant",
@@ -12,13 +12,12 @@
     "custom-cards",
     "picture-elements"
   ],
-  "main": "src/cover-element.js",
-  "module": "src/cover-element.js",
-  "repository": "git@github.com:yosilevy/cover-element.git",
+  "main": "src/text-action-element.js",
+  "module": "src/text-action-element.js",
+  "repository": "git@github.com:yosilevy/text-action-element.git",
   "author": "Yosi Levy <yosilevy@gmail.com>",
   "license": "Apache-2.0",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
@@ -37,12 +36,15 @@
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.4",
     "rollup": "^0.66.6",
-    "rollup-plugin-node-resolve": "^3.4.0"
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "typescript": "^3.3.3333"
   },
   "scripts": {
     "build": "npm run lint && npm run rollup && npm run babel",
     "rollup": "rollup -c",
-    "babel": "babel dist/cover-element-bundle.js --out-file dist/cover-element-bundle.js",
+    "babel": "babel dist/text-action-element-bundle.js --out-file dist/text-action-element-bundle.js",
     "lint": "./node_modules/.bin/eslint src/* --ext .js",
     "watch": "rollup -c --watch"
   }

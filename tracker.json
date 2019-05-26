@@ -1,10 +1,10 @@
 {
-    "cover-element-bundle": {
+    "text-action-element-bundle": {
       "updated_at": "2019-05-07",
-      "version": "0.2.0",
-      "remote_location": "https://github.com/custom-cards/cover-element/releases/download/0.2.0/cover-element-bundle.js",
-      "visit_repo": "https://github.com/custom-cards/cover-element",
-      "changelog": "https://github.com/custom-cards/cover-element/releases/latest"
+      "version": "0.1.0",
+      "remote_location": "https://github.com/custom-cards/text-action-element/releases/download/0.2.0/text-action-element-bundle.js",
+      "visit_repo": "https://github.com/custom-cards/text-action-element",
+      "changelog": "https://github.com/custom-cards/text-action-element/releases/latest"
     }
   }
   

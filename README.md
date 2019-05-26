@@ -2,14 +2,14 @@
 
 An element that shows cover/blinds control in a [Home Assistant](https://github.com/home-assistant/home-assistant) [picture-elements](https://www.home-assistant.io/lovelace/picture-elements/) card.
 
-<img src="https://github.com/custom-cards/cover-element/blob/master/docs/Cover-main.JPG?raw=true" width="450">
+<img src="https://github.com/custom-cards/text-action-element/blob/master/docs/Cover-main.JPG?raw=true" width="450">
 
 ## Using the card
 
 #### Element options
 | Name | Type | Default | Since | Description |
 |------|------|---------|-------|-------------|
-| type | string | **required** | v0.1 | `custom:cover-element`
+| type | string | **required** | v0.1 | `custom:text-action-element`
 | entity | string | **required** | v0.1 | Cover entity to control.
 
 #### Position_label object
@@ -22,13 +22,13 @@ An element that shows cover/blinds control in a [Home Assistant](https://github.
 
 ### Example usage
 
-<img src="https://github.com/custom-cards/cover-element/blob/master/docs/Cover-main.JPG?raw=true" width="450">
+<img src="https://github.com/custom-cards/text-action-element/blob/master/docs/Cover-main.JPG?raw=true" width="450">
 
 ```yaml
 - type: picture-elements
   image: /local/LivingRoom.jpg
   elements:
-    - type: 'custom:cover-element'
+    - type: 'custom:text-action-element'
       entity: cover.livingroom_terrace_shutter
       position_label:
         show: true
@@ -48,13 +48,13 @@ An element that shows cover/blinds control in a [Home Assistant](https://github.
 
 ### Simple install
 
-1. Download and copy `cover-element-bundle.js` from the [latest release](https://github.com/custom-cards/cover-element/releases/latest) into your `config/www` directory.
+1. Download and copy `text-action-element-bundle.js` from the [latest release](https://github.com/custom-cards/text-action-element/releases/latest) into your `config/www` directory.
 
-2. Add a reference to `cover-element-bundle.js` in lovelace.
+2. Add a reference to `text-action-element-bundle.js` in lovelace.
 
   ```yaml
   resources:
-    - url: /local/cover-element-bundle.js?v=0.1.0
+    - url: /local/text-action-element-bundle.js?v=0.1.0
       type: module
   ```
 To do this, go to Configure UI -> Raw Config Editor and paste this under resources or use [YAML Mode](https://www.home-assistant.io/lovelace/yaml-mode/) (not recommended))
@@ -63,17 +63,17 @@ To do this, go to Configure UI -> Raw Config Editor and paste this under resourc
 
 1. Move into your `config/www` directory
 
-2. Grab `cover-element-bundle.js`
+2. Grab `text-action-element-bundle.js`
 
   ```console
-  $ wget https://github.com/custom-cards/cover-element/releases/download/0.1.0/cover-element-bundle.js
+  $ wget https://github.com/custom-cards/text-action-element/releases/download/0.1.0/text-action-element-bundle.js
   ```
 
-3. Add a reference to `cover-element-bundle.js` inside your `ui-lovelace.yaml`.
+3. Add a reference to `text-action-element-bundle.js` inside your `ui-lovelace.yaml`.
 
   ```yaml
   resources:
-    - url: /local/cover-element-bundle.js?v=0.1.0
+    - url: /local/text-action-element-bundle.js?v=0.1.0
       type: module
   ```
 
@@ -86,19 +86,19 @@ To do this, go to Configure UI -> Raw Config Editor and paste this under resourc
   ```yaml
   custom_updater:
     card_urls:
-      - https://raw.githubusercontent.com/custom-cards/cover-element/master/tracker.json
+      - https://raw.githubusercontent.com/custom-cards/text-action-element/master/tracker.json
   ```
 
 ## Updating
-1. Find your `cover-element-bundle.js` file in `config/www` or wherever you ended up storing it.
+1. Find your `text-action-element-bundle.js` file in `config/www` or wherever you ended up storing it.
 
-2. Replace the local file with the latest one attached in the [latest release](https://github.com/custom-cards/cover-element/releases/latest).
+2. Replace the local file with the latest one attached in the [latest release](https://github.com/custom-cards/text-action-element/releases/latest).
 
 3. Add the new version number to the end of the cards reference url in your `ui-lovelace.yaml` like below.
 
   ```yaml
   resources:
-    - url: /local/cover-element-bundle.js?v=0.1.0
+    - url: /local/text-action-element-bundle.js?v=0.1.0
       type: module
   ```
 
@@ -107,11 +107,11 @@ To do this, go to Configure UI -> Raw Config Editor and paste this under resourc
 ## Getting errors?
 Make sure you have `javascript_version: latest` in your `configuration.yaml` under `frontend:`.
 
-Make sure you have the latest version of `cover-element-bundle.js`.
+Make sure you have the latest version of `text-action-element-bundle.js`.
 
 If you have issues after updating the card, try clearing your browsers cache or restart Home Assistant.
 
-If you get "Custom element doesn't exist: cover-element" or running older browsers try replacing `type: module` with `type: js` in your resource reference, like below.
+If you get "Custom element doesn't exist: text-action-element" or running older browsers try replacing `type: module` with `type: js` in your resource reference, like below.
 
 ```yaml
 resources:
