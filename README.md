@@ -1,4 +1,4 @@
-# Cover Element
+# Text Action Element
 
 A very simple element for picture-elements card that shows static text that supports a tap action. I needed this component since I was building a media control panel using picture-elements and ran in to rendering bugs on iOS (in HA app). To solve that I generated a font using [glyphter.com](http://glyphter.com) and I needed a component to render the text but still make it a button. So I made this component as a lightweight alternative to custom button elements.
 
