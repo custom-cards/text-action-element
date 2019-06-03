@@ -1,8 +1,6 @@
 # Cover Element
 
-An element that shows cover/blinds control in a [Home Assistant](https://github.com/home-assistant/home-assistant) [picture-elements](https://www.home-assistant.io/lovelace/picture-elements/) card.
-
-<img src="https://github.com/custom-cards/text-action-element/blob/master/docs/Cover-main.JPG?raw=true" width="450">
+A very simple element for picture-elements card that shows static text that supports a tap action. I needed this component since I was building a media control panel using picture-elements and ran in to rendering bugs on iOS (in HA app). To solve that I generated a font using [glyphter.com](http://glyphter.com) and I needed a component to render the text but still make it a button. So I made this component as a lightweight alternative to custom button elements.
 
 ## Using the card
 
@@ -10,38 +8,40 @@ An element that shows cover/blinds control in a [Home Assistant](https://github.
 | Name | Type | Default | Since | Description |
 |------|------|---------|-------|-------------|
 | type | string | **required** | v0.1 | `custom:text-action-element`
-| entity | string | **required** | v0.1 | Cover entity to control.
+| text | string | **required** | v0.1 | Cover entity to control.
+| entity | string |  | v0.1 | entity that tap_action should operate on
+| tap_action | object |  | v0.1 | See [Action](#action) 
+| state_filter | list |  | v0.1 | State based CSS filters. See [this link](https://www.home-assistant.io/lovelace/picture-elements/#how-to-use-state_filter) for usage docs.
 
-#### Position_label object
-| Name | Type | Default | Since | Description |
-|------|------|---------|-------|-------------|
-| show | boolean | false | v0.1 | Show the current position of the cover.
-| open_text | string | open | v0.1 | Sets the text to show when cover is fully open.
-| closed_text | string | closed | v0.1 | Sets the text to show when cover is fully closed.
-| interim_text | string | open | v0.1 | Sets the text to show when cover is partially open.
+### Action
+
+| Name              | Type   | Default  | Supported options                                                | Description                                                                                              |
+| ----------------- | ------ | -------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `action`          | string | `toggle` | `more-info`, `toggle`, `call-service`, `none`, `navigate`, `url` | Action to perform                                                                                        |
+| `entity` | string | none | Any entity id | **Only valid for `action: more-info`** to override the entity on which you want to call `more-info` |
+| `navigation_path` | string | none     | Eg: `/lovelace/0/`                                               | Path to navigate to (e.g. `/lovelace/0/`) when action defined as navigate                                |
+| `url`             | string | none     | Eg: `https://www.google.fr`                                      | URL to open on click when action is `url`. The URL will open in a new tab                                |
+| `service`         | string | none     | Any service                                                      | Service to call (e.g. `media_player.media_play_pause`) when `action` defined as `call-service`           |
+| `service_data`    | object | none     | Any service data                                                 | Service data to include (e.g. `entity_id: media_player.bedroom`) when `action` defined as `call-service`. If your `service_data` requires an `entity_id`, you can use the keywork `entity`, this will actually call the service on the entity defined in the main configuration of this card. Useful for [configuration templates](#configuration-templates) |
 
 ### Example usage
-
-<img src="https://github.com/custom-cards/text-action-element/blob/master/docs/Cover-main.JPG?raw=true" width="450">
 
 ```yaml
 - type: picture-elements
   image: /local/LivingRoom.jpg
   elements:
     - type: 'custom:text-action-element'
-      entity: cover.livingroom_terrace_shutter
-      position_label:
-        show: true
-        open_text: open
-        closed_text: closed
-        interim_text: open
+      text: Lights on!
       style:
         top: 40%
         height: 15%
-        background-color: 'rgba(255, 255, 255, 0.6)'
         width: 23%
-        border-radius: 10px
         left: 53%
+        background-color: 'rgba(255, 255, 255, 0.6)'
+        border-radius: 10px
+      entity: light.livingroom
+      tap_action:
+        action: toggle
 ```
 
 ## Install
@@ -118,9 +118,6 @@ resources:
   - url: ...
     type: js
 ```
-
-## Note - Home Assistant version 0.91.X
-There is a bug in HA 0.91.X that will be fixed in 0.92 and causes this control to display wrong in the card editor. Please ignore it as it will look OK in the actual UI.
 
 ## License
 This project is under the Apache 2.0 license.

@@ -7,7 +7,7 @@ export default {
   output: {
     file: "dist/text-action-element-bundle.js",
     format: "umd",
-    name: "GroupElement",
+    name: "TextActionElement",
   },
   plugins: [resolve(),
     typescript()
