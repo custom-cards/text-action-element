@@ -9,7 +9,7 @@ A very simple element for picture-elements card that shows static text that supp
 |------|------|---------|-------|-------------|
 | type | string | **required** | v0.1 | `custom:text-action-element`
 | text | string | **required** | v0.1 | Cover entity to control.
-| entity | string |  | v0.1 | entity that tap_action should operate on
+| entity | string |  | v0.1 | Entity that tap_action should operate on (no need to provide if you just want static text)
 | tap_action | object |  | v0.1 | See [Action](#action) 
 | state_filter | list |  | v0.1 | State based CSS filters. See [this link](https://www.home-assistant.io/lovelace/picture-elements/#how-to-use-state_filter) for usage docs.
 
@@ -18,7 +18,6 @@ A very simple element for picture-elements card that shows static text that supp
 | Name              | Type   | Default  | Supported options                                                | Description                                                                                              |
 | ----------------- | ------ | -------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `action`          | string | `toggle` | `more-info`, `toggle`, `call-service`, `none`, `navigate`, `url` | Action to perform                                                                                        |
-| `entity` | string | none | Any entity id | **Only valid for `action: more-info`** to override the entity on which you want to call `more-info` |
 | `navigation_path` | string | none     | Eg: `/lovelace/0/`                                               | Path to navigate to (e.g. `/lovelace/0/`) when action defined as navigate                                |
 | `url`             | string | none     | Eg: `https://www.google.fr`                                      | URL to open on click when action is `url`. The URL will open in a new tab                                |
 | `service`         | string | none     | Any service                                                      | Service to call (e.g. `media_player.media_play_pause`) when `action` defined as `call-service`           |
