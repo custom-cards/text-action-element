@@ -1,3 +1,5 @@
+import { fireEvent } from "./fireEvent.js";
+
 /*
     Home Assistant utility class
     Inspired by Thomas Loven's card-tools (no-license)
@@ -15,10 +17,10 @@ export class HassUtils {
     return this.LitElement.prototype.css;
   }
 
-  static callService(hass, domain, service, entity_id, inOptions) {
+  static callService(hass, domain, service, entityId, inOptions) {
     hass.callService(domain, service, {
-      entity_id: entity_id,
-      ...inOptions,
+      entity_id: entityId,
+      ...inOptions
     });
   }
 
@@ -51,8 +53,8 @@ export class HassUtils {
     return entityId.substr(0, entityId.indexOf("."));
   }
 
-  static popUp(hass, title, content, large = false) {
-    let popup = document.createElement("div");
+  static popUp(hass, title, content) {
+    const popup = document.createElement("div");
     popup.innerHTML = `
       <style>
         app-toolbar {
@@ -72,7 +74,7 @@ export class HassUtils {
     `;
     popup.appendChild(content);
     this.moreInfo(Object.keys(hass.states)[0]);
-    let moreInfo = document.querySelector("home-assistant")._moreInfoEl;
+    const moreInfo = document.querySelector("home-assistant")._moreInfoEl;
     moreInfo._page = "none";
     moreInfo.shadowRoot.appendChild(popup);
     // moreInfo.large = large;
@@ -80,7 +82,7 @@ export class HassUtils {
     document.querySelector("home-assistant").provideHass(content);
 
     setTimeout(() => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         if (moreInfo.getAttribute("aria-hidden")) {
           popup.parentNode.removeChild(popup);
           clearInterval(interval);
@@ -91,7 +93,7 @@ export class HassUtils {
   }
 
   static closePopUp() {
-    let moreInfo = document.querySelector("home-assistant")._moreInfoEl;
+    const moreInfo = document.querySelector("home-assistant")._moreInfoEl;
     if (moreInfo) moreInfo.close();
   }
 
@@ -103,7 +105,7 @@ export class HassUtils {
     ev = new Event(ev, {
       bubbles: true,
       cancelable: false,
-      composed: true,
+      composed: true
     });
     ev.detail = detail || {};
     if (entity) {
@@ -133,7 +135,7 @@ export class HassUtils {
       history.pushState(null, "", path);
     }
     fireEvent(window, "location-changed", {
-      replace,
+      replace
     });
   }
 }

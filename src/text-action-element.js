@@ -1,4 +1,4 @@
-import { HassUtils } from "./hass/hass-utils";
+import { HassUtils } from "./hass/hass-utils.js";
 import { handleClick } from "./hass/handle-click.ts";
 
 class HuiTextActionElement extends HassUtils.LitElement {
@@ -10,7 +10,7 @@ class HuiTextActionElement extends HassUtils.LitElement {
   static get properties() {
     return {
       hass: {},
-      config: {},
+      config: {}
     };
   }
 
