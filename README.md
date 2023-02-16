@@ -8,7 +8,8 @@ A very simple element for picture-elements card that shows static text that supp
 | Name | Type | Default | Since | Description |
 |------|------|---------|-------|-------------|
 | type | string | **required** | v0.1 | `custom:text-action-element`
-| text | string | **required** | v0.1 | Cover entity to control.
+| text | string | **required** | v0.1 | Text to display (**EITHER** text or icon must be specified)
+| icon | string | **required** | v0.3 | Icon to display (**EITHER** icon or text must be specified)
 | entity | string |  | v0.1 | Entity that tap_action should operate on (no need to provide if you just want static text)
 | tap_action | object |  | v0.1 | See [Action](#action) 
 | state_filter | list |  | v0.1 | State based CSS filters. See [this link](https://www.home-assistant.io/lovelace/picture-elements/#how-to-use-state_filter) for usage docs.
@@ -43,6 +44,27 @@ A very simple element for picture-elements card that shows static text that supp
         action: toggle
 ```
 
+Icon with no action
+
+```yaml
+- type: picture-elements
+  image: /local/LivingRoom.jpg
+  elements:
+    - type: 'custom:text-action-element'
+      icon: mdi:television
+      style:
+        top: 40%
+        height: 15%
+        width: 23%
+        left: 53%
+        background-color: 'rgba(255, 255, 255, 0.6)'
+        border-radius: 10px
+      entity: light.livingroom
+      tap_action:
+        action: none
+```
+
+
 ## Install
 
 ### Simple install
@@ -53,7 +75,7 @@ A very simple element for picture-elements card that shows static text that supp
 
   ```yaml
   resources:
-    - url: /local/text-action-element-bundle.js?v=0.1.0
+    - url: /local/text-action-element-bundle.js?v=0.3.0
       type: module
   ```
 To do this, go to Configure UI -> Raw Config Editor and paste this under resources or use [YAML Mode](https://www.home-assistant.io/lovelace/yaml-mode/) (not recommended))
@@ -65,14 +87,14 @@ To do this, go to Configure UI -> Raw Config Editor and paste this under resourc
 2. Grab `text-action-element-bundle.js`
 
   ```console
-  $ wget https://github.com/custom-cards/text-action-element/releases/download/0.1.0/text-action-element-bundle.js
+  $ wget https://github.com/custom-cards/text-action-element/releases/download/0.3.0/text-action-element-bundle.js
   ```
 
 3. Add a reference to `text-action-element-bundle.js` inside your `ui-lovelace.yaml`.
 
   ```yaml
   resources:
-    - url: /local/text-action-element-bundle.js?v=0.1.0
+    - url: /local/text-action-element-bundle.js?v=0.3.0
       type: module
   ```
 
@@ -97,7 +119,7 @@ To do this, go to Configure UI -> Raw Config Editor and paste this under resourc
 
   ```yaml
   resources:
-    - url: /local/text-action-element-bundle.js?v=0.1.0
+    - url: /local/text-action-element-bundle.js?v=0.3.0
       type: module
   ```
 

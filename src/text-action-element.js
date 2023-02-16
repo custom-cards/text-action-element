@@ -15,15 +15,19 @@ class HuiTextActionElement extends HassUtils.LitElement {
   }
 
   setConfig(config) {
-    if (!config.text) {
-      throw Error("Invalid Configuration: 'text' required");
+    if (!config.text && !config.icon) {
+      throw Error("Invalid Configuration: 'text' or 'icon' required");
     }
 
     this._config = config;
   }
 
   render() {
-    if (!this._config || !this.hass || !this._config.text) {
+    if (
+      !this._config ||
+      !this.hass ||
+      (!this._config.text && !this._config.icon)
+    ) {
       return HassUtils.LitHtml``;
     }
 
@@ -48,7 +52,13 @@ class HuiTextActionElement extends HassUtils.LitElement {
     return HassUtils.LitHtml`
       <div class="content" @click=${this._handleTap} 
         style="${filter}">
-        ${this._config.text}
+          ${
+            this._config.text
+              ? this._config.text
+              : HassUtils.LitHtml`
+                  <ha-icon .icon=${this._config.icon}></ha-icon>
+                `
+          }
       </div>
     `;
   }
